@@ -5,7 +5,20 @@ from datetime import datetime
 
 
 class BaseModel(object):
+    """
+    Base model for all other models to inherit from
+
+    Attributes:
+    id(str) - unique string id
+    created_at(datetime) - time object was created
+    updated_at(datetime) - last time object was updated
+
+    Methods:
+    save - save an object and updates the time
+    to_dict - returns a dictionary representation of object
+    """
     def __init__(self) -> None:
+        """ initialize BaseModel instance """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -26,6 +39,7 @@ class BaseModel(object):
         return my_dict
 
     def __str__(self) -> str:
+        """ string representation of object """
         string = "[{}] ({}) {}".\
             format(self.__class__.__name__, self.id, self.__dict__)
         return string
