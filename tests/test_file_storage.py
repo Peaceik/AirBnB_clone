@@ -7,10 +7,10 @@ import os
 import unittest
 from datetime import datetime
 import sys
-sys.path.append("..")
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+sys.path.append("..")
 
 
 class TestFileStorage(unittest.TestCase):
@@ -83,5 +83,6 @@ class TestFileStorage(unittest.TestCase):
             argument but 2 were given"
         self.assertEqual(str(e.exception), msg)
 
+
 if __name__ == "__main__":
-        unittest.main()
+    unittest.main()

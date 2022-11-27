@@ -11,7 +11,7 @@ class FileStorage:
     """ serializes and deserializes json file
     """
     __file_path = "file.json"
-     __objects = {}
+    __objects = {}
 
     def all(self):
         """ return dict __objects
@@ -34,6 +34,15 @@ class FileStorage:
 
         with open(FileStorage.__file_path, 'w') as f:
             json.dump(dictionary, f)
+
+    def delete(self, id):
+        """ deletes an instance from the file storage """
+        if id in FileStorage.__objects:
+            FileStorage.__objects.pop(id)
+            self.save()
+            return True
+        else:
+            return False
 
     def reload(self):
         """ deserializes the JSON file to __objects

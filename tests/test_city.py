@@ -9,16 +9,16 @@ import re
 import unittest
 from datetime import datetime as datetime
 import sys
-sys.path.append("..")
 from models.city import City
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+sys.path.append("..")
 
 
 class TestCity(unittest.TestCase):
 
-        """Test Cases for the City class."""
+    """Test Cases for the City class."""
 
     def setUp(self):
         """Sets up test methods."""

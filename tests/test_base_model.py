@@ -4,7 +4,6 @@
 
 
 import sys
-sys.path.append("..")
 import unittest
 from datetime import datetime as datetime
 from models.base_model import BaseModel
@@ -13,6 +12,7 @@ import json
 import uuid
 import os
 import re
+sys.path.append("..")
 
 
 class TestBaseModel(unittest.TestCase):
@@ -51,7 +51,8 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.__init__()
-        msg = "BaseModel.__init__() missing 1 required positional argument: 'self'"
+        msg = "BaseModel.__init__() missing 1 required "
+        msg += "positional argument: 'self'"
         self.assertEqual(str(e.exception), msg)
 
     def test_str(self):
@@ -77,7 +78,7 @@ class TestBaseModel(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             BaseModel.save(self, "Parameter")
         msg = "BaseModel.save() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception),msg)
+        self.assertEqual(str(e.exception), msg)
 
     def test_to_dict(self):
         """Tests the conversion method for dictionaries"""
@@ -89,14 +90,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b["created_at"], a.created_at.isoformat())
         self.assertEqual(b["updated_at"], a.updated_at.isoformat())
         self.assertEqual(b["name"], a.name)
-        self.assertEqual(b["age"], a,age)
+        self.assertEqual(b["age"], a.age)
 
     def test_to_dict_without_parameters(self):
         """Tests to_dict() with no parameters passed."""
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.to_dict()
-        msg = "BaseModel.to_dict() missing 1 required positional argument: 'self'"
+        msg = "BaseModel.to_dict() missing 1 required "
+        msg += "positional argument: 'self'"
         self.assertEqual(str(e.exception), msg)
 
     def test_3_to_dict_more_parameters(self):
@@ -104,7 +106,8 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.to_dict(self, "work", "serve", "love")
-        msg = "BaseModel.to_dict() takes 1 positional argument but 4 were given"
+        msg = "BaseModel.to_dict() takes 1 positional "
+        msg += "argument but 4 were given"
         self.assertEqual(str(e.excepton), msg)
 
     def test_instantiation_process(self):
@@ -115,5 +118,7 @@ class TestBaseModel(unittest.TestCase):
         b_json = b.to_dict()
         b_new = BaseModel(**b_json)
         self.assertEqual(b_new.to_dict(), b.to_dict())
+
+
 if __name__ == '__main__':
     unittest.main()

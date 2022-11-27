@@ -11,11 +11,11 @@ import unittest
 from io import StringIO
 import sys
 from unittest.mock import patch
-sys.path.append("..")
 from console import HBNBCommand
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+sys.path.append("..")
 
 
 class TestConsole(unittest.TestCase):

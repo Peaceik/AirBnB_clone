@@ -9,11 +9,11 @@ import re
 import unittest
 from datetime import datetime as datetime
 import sys
-sys.path.append("..")
 from models.place import Place
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+sys.path.append("..")
 
 
 class TestPlace(unittest.TestCase):
