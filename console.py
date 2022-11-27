@@ -5,6 +5,12 @@ with models for the HBNB project
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 
 
@@ -26,7 +32,20 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        model = BaseModel()
+        if arg == "BaseModel":
+            model = BaseModel()
+        elif arg == "User":
+            model = User()
+        elif arg == "Place":
+            model = Place()
+        elif arg == "State":
+            model = State()
+        elif arg == "City":
+            model = City()
+        elif arg == "Amenity":
+            model = Amenity()
+        elif arg == "Review":
+            model = Review()
         storage.save()
         print(model.id)
 
