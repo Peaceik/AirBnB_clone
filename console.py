@@ -99,11 +99,13 @@ class HBNBCommand(cmd.Cmd):
             return
         objects = storage.all()
         result = []
-        for instance in objects.values():
-            if arg and instance.__class__.__name__ == arg:
+        if arg:
+            for instance in objects.values():
+                if instance.__class__.__name__ == arg:
+                    result.append(str(instance))
+        else:
+            for instance in objects.values():
                 result.append(str(instance))
-                continue
-            result.append(str(instance))
 
         print(result)
 
