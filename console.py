@@ -109,6 +109,22 @@ class HBNBCommand(cmd.Cmd):
 
         print(result)
 
+    def do_count(self, arg):
+        """
+        prints a list of all instances of a model
+        based or not on the class name
+        """
+        if arg and arg not in models:
+            print("** class doesn't exist **")
+            return
+        objects = storage.all()
+        result = []
+        for instance in objects.values():
+            if instance.__class__.__name__ == arg:
+                result.append(str(instance))
+
+        print(len(result))
+
     def do_update(self, arg):
         """ updates an instance and save it """
         args = arg.split()
@@ -147,6 +163,209 @@ class HBNBCommand(cmd.Cmd):
                 value = float(args[3])
         instance.__dict__[args[2]] = value
         instance.save()
+
+    def do_User(self, arg):
+        """ users utility method """
+        if arg == ".all()":
+            self.do_all("User")
+        elif arg == ".count()":
+            self.do_count("User")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "User " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "User " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "User "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_State(self, arg):
+        """ states utility method """
+        if arg == ".all()":
+            self.do_all("State")
+        elif arg == ".count()":
+            self.do_count("State")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "State " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "State " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "State "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_Place(self, arg):
+        """ places utility method """
+        if arg == ".all()":
+            self.do_all("Place")
+        elif arg == ".count()":
+            self.do_count("Place")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "Place " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "Place " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "Place "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_City(self, arg):
+        """ cities utility method """
+        if arg == ".all()":
+            self.do_all("City")
+        elif arg == ".count()":
+            self.do_count("City")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "City " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "City " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "City "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_Amenity(self, arg):
+        """ amenities utility method """
+        if arg == ".all()":
+            self.do_all("Amenity")
+        elif arg == ".count()":
+            self.do_count("Amenity")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "Amenity " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "Amenity " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "Amenity "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_BaseModel(self, arg):
+        """ base models utility method """
+        if arg == ".all()":
+            self.do_all("BaseModel")
+        elif arg == ".count()":
+            self.do_count("BaseModel")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "BaseModel " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "BaseModel " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "BaseModel "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
+
+    def do_Review(self, arg):
+        """ review utility method """
+        if arg == ".all()":
+            self.do_all("Review")
+        elif arg == ".count()":
+            self.do_count("Review")
+        elif arg.startswith('.show("') and arg[-1] == ")":
+            args = "Review " + arg[7:-2]
+            self.do_show(args)
+        elif arg.startswith('.destroy("') and arg[-1] == ")":
+            args = "Review " + arg[10:-2]
+            self.do_destroy(args)
+        elif arg.startswith('.update("') and arg[-1] == ")":
+            if arg[-2] == '"':
+                args_list = arg[9:-2].split(",")
+            else:
+                args_list = arg[9:-1].split(",")
+            args = "Review "
+            if len(args_list) >= 1:
+                args += args_list[0][:-1]
+            if len(args_list) >= 2:
+                args += " " + args_list[1][2:-1] + " "
+            if len(args_list) >= 3:
+                if arg[-2] == '"':
+                    args += args_list[2][2:]
+                else:
+                    args += args_list[2][1:]
+            self.do_update(args)
 
     def do_quit(self, arg) -> bool:
         """ quit the shell """
