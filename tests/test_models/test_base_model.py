@@ -51,7 +51,7 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.__init__()
-        msg = "BaseModel.__init__() missing 1 required "
+        msg = "__init__() missing 1 required "
         msg += "positional argument: 'self'"
         self.assertEqual(str(e.exception), msg)
 
@@ -69,7 +69,7 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.save()
-        msg = "BaseModel.save() missing 1 required positional argument: 'self'"
+        msg = "save() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), msg)
 
     def test_save_parameters(self):
@@ -77,7 +77,7 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.save(self, "Parameter")
-        msg = "BaseModel.save() takes 1 positional argument but 2 were given"
+        msg = "save() takes 1 positional argument but 2 were given"
         self.assertEqual(str(e.exception), msg)
 
     def test_to_dict(self):
@@ -97,7 +97,7 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.to_dict()
-        msg = "BaseModel.to_dict() missing 1 required "
+        msg = "to_dict() missing 1 required "
         msg += "positional argument: 'self'"
         self.assertEqual(str(e.exception), msg)
 
@@ -106,9 +106,9 @@ class TestBaseModel(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.to_dict(self, "work", "serve", "love")
-        msg = "BaseModel.to_dict() takes 1 positional "
+        msg = "to_dict() takes 1 positional "
         msg += "argument but 4 were given"
-        self.assertEqual(str(e.excepton), msg)
+        self.assertEqual(str(e.exception), msg)
 
     def test_instantiation_process(self):
         """Tests instantiation with **kwargs."""
