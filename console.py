@@ -154,6 +154,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg) -> bool:
         """ quit the shell """
+        print()
         return True
 
     def emptyline(self) -> None:
